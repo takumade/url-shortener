@@ -124,5 +124,3 @@ docker build -t frontend -f ./Dockerfile .
 
 docker run -p 5173:80 frontend
 ```
-
-.
