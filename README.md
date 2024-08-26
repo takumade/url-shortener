@@ -39,7 +39,7 @@ cd url-shortener && npm i
 
 **3. Configure and run**
 
-Config you `.env` file
+Config you `.env` file. Check the `sample.env`
 
 ```env
 PORT=3000
