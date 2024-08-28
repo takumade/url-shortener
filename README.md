@@ -2,6 +2,9 @@
 
 Is a microservice for shortening URLs. You give it a long URL and it can shorten that for you. If you can later use that shortened URL to to the original URL
 
+
+![URL Shortener](./public/url-shortener.png)
+
 ## Applications
 - Simplifying Long URLs
 - Social Media Sharing
