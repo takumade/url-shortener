@@ -34,11 +34,13 @@ const [shortenedUrl, setShortenedUrl] = React.useState(0)
   
   return (
     <div className="">
-      <h1 className="text-3xl font-bold mt-32">URL Shortener Microservice</h1>
+     
 
         <div className="mt-6 w-4/12 mx-auto">
+
+        <h1 className="text-3xl font-bold mt-32">URL Shortener Microservice</h1>
         
-           <div className="flex gap-2">
+           <div className="flex gap-2 mt-8">
            <label className="input input-bordered flex items-center w-full">
               <input
                 type="text"
