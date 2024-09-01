@@ -49,6 +49,24 @@ describe("POST /api/shorturl", () => {
 });
 
 
+describe("POST /api/shorturl/:id", () => {
+
+    let short_url = null
+    it("id does not exist", async () => {
+        return request(app)
+            .get("/api/shorturl/999")
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((res) => {
+                
+                expect(res.statusCode).toBe(200);
+             
+            })
+    });
+});
+
+
+
 afterAll(async () => {
     await mongoose.disconnect();
   });

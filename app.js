@@ -39,16 +39,19 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
-app.get("/api/shorturl/:id", (req, res) => {
+app.get("/api/shorturl/:id", async (req, res) => {
   var shortenerId = req.params.id;
 
   if (Number.isInteger(parseInt(shortenerId))) {
-    Shortener.find({ short: parseInt(shortenerId) }, (err, data) => {
-      if (err) {
+
+    try{
+        let  data = await Shortener.find({ short: parseInt(shortenerId) })
+        res.redirect(data[0].long)
+    }catch(error){
         res.json("not refering to a URL in db");
-      }
-      res.redirect(data[0].long);
-    });
+    }    
+  }else{
+    res.json("Please enter a valid ID")
   }
 });
 
