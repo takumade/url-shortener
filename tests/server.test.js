@@ -5,10 +5,16 @@ const mongoose = require("mongoose")
 require("dotenv").config();
 
 
-beforeAll(done => {
-    done()
-  })
+beforeAll(async () => {
+    await mongoose.disconnect();
+    await mongoose.connect(process.env["MONGO_URL"],   { useNewUrlParser: true,useUnifiedTopology: true  });
+  });
   
+  
+  afterAll(async () => {
+    await mongoose.disconnect();
+  });
+
 
 
 describe("GET /api/hello", () => {
@@ -24,9 +30,3 @@ describe("GET /api/hello", () => {
 });
 
 
-
-afterAll(done => {
-    // Closing the DB connection allows Jest to exit successfully.
-    mongoose.close()
-    done()
-  })

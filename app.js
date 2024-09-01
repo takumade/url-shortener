@@ -96,4 +96,27 @@ function isValid(url) {
   return true;
 }
 
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose connected to the database');
+});
+
+// Handle connection errors
+mongoose.connection.on('error', (err) => {
+    console.error(`Mongoose connection error: ${err}`);
+});
+
+// Handle process termination and close Mongoose connection
+function gracefulShutdown(signal) {
+    console.log(`Received ${signal}. Closing Mongoose connection...`);
+    mongoose.connection.close(() => {
+        console.log('Mongoose connection closed.');
+        process.exit(0);
+    });
+}
+
+// Handle various termination signals
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGUSR2', () => gracefulShutdown('SIGUSR2')); // For nodemon
+
 module.exports = app;
