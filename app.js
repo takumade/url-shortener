@@ -65,13 +65,9 @@ app
     hostname = hostname.split("/")[0];
 
     dns.lookup(hostname, function (err, addresses, family) {
-      console.log(addresses);
-      console.log(paramURL);
       if (addresses != undefined) {
-        console.log("I am alive");
 
         Shortener.countDocuments({}, function (err, count) {
-          console.log(count);
           let newPlace = count + 1;
           let newShort = Shortener({
             long: paramURL,

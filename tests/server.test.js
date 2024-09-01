@@ -58,8 +58,8 @@ describe("POST /api/shorturl/:id", () => {
             .expect('Content-Type', /json/)
             .expect(200)
             .then((res) => {
-                console.log(res.text)
                 expect(res.statusCode).toBe(200);
+                expect(res.text.includes("not refering to a URL in db")).toBe(true)
              
             })
     });
