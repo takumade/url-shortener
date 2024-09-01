@@ -86,6 +86,13 @@ And run
 npm run dev
 ```
 
+
+## Testing 
+
+```sh
+npm run test
+```
+
 ## Containerizing
 
 You can also run this app in a docker container.
