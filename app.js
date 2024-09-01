@@ -91,10 +91,6 @@ app
     });
   });
 
-function isValid(url) {
-  if (!validUrl.isUri(url)) return false;
-  return true;
-}
 
 mongoose.connection.on('connected', () => {
     console.log('Mongoose connected to the database');
