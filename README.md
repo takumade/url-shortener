@@ -27,6 +27,7 @@ Is a microservice for shortening URLs. You give it a long URL and it can shorten
 - Mongo DB (Database)
 - React JS + Tailwind CSS (Frontend)
 - Docker (Containerization)
+- Jest (Testing)
 
 ## Installation (Server)
 

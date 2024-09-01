@@ -58,7 +58,7 @@ describe("POST /api/shorturl/:id", () => {
             .expect('Content-Type', /json/)
             .expect(200)
             .then((res) => {
-                
+                console.log(res.text)
                 expect(res.statusCode).toBe(200);
              
             })
