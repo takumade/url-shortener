@@ -51,7 +51,7 @@ describe("POST /api/shorturl", () => {
 
 describe("POST /api/shorturl/:id", () => {
 
-    let short_url = null
+    
     it("id does not exist", async () => {
         return request(app)
             .get("/api/shorturl/999")
@@ -60,6 +60,18 @@ describe("POST /api/shorturl/:id", () => {
             .then((res) => {
                 expect(res.statusCode).toBe(200);
                 expect(res.text.includes("not refering to a URL in db")).toBe(true)
+             
+            })
+    });
+
+    it("ID not a number", async () => {
+        return request(app)
+            .get("/api/shorturl/catsanddos")
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((res) => {
+                expect(res.statusCode).toBe(200);
+                expect(res.text.includes("Please enter a valid ID")).toBe(true)
              
             })
     });
