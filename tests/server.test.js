@@ -11,9 +11,6 @@ beforeAll(async () => {
   });
   
   
-  afterAll(async () => {
-    await mongoose.disconnect();
-  });
 
 
 
@@ -28,5 +25,32 @@ describe("GET /api/hello", () => {
             })
     });
 });
+
+
+
+describe("POST /api/shorturl", () => {
+
+    let short_url = null
+    it("should shorten a URL", async () => {
+        return request(app)
+            .post("/api/shorturl")
+            .set('Content-Type', "application/json")
+            .expect('Content-Type', /json/)
+            .send({
+                url: "https://www.facebook.com/groups/3164348350526480/?hoisted_section_header_type=recently_seen&multi_permalinks=3330217577272889"
+            })
+            .expect(200)
+            .then((res) => {
+                short_url = JSON.parse(res.text).short_url
+                expect(res.statusCode).toBe(200);
+                expect(Object.keys(JSON.parse(res.text)).includes("short_url")).toBe(true)
+            })
+    });
+});
+
+
+afterAll(async () => {
+    await mongoose.disconnect();
+  });
 
 
